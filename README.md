@@ -1,3 +1,17 @@
+## Forked from [DerwenAI/strwythura](https://github.com/DerwenAI/strwythura)
+
+### Install
+
+```
+uv sync
+```
+
+### Run
+
+```
+uv run demo.py
+```
+
 # [GraphGeeks.org talk 2024-08-14](https://github.com/DerwenAI/strwythura)
 
 How to construct _knowledge graphs_ from unstructured data sources.
