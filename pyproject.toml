@@ -24,3 +24,6 @@ dependencies = [
     "tqdm>=4.66",
     "watermark>=2.4",
 ]
+
+[tool.taskipy.tasks]
+download_model = "uv run spacy download en_core_web_md"
