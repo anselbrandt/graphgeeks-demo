@@ -21,6 +21,7 @@ dependencies = [
     "pyvis>=0.3",
     "requests>=2.32",
     "spacy>=3.7",
+    "taskipy>=1.14.1",
     "tqdm>=4.66",
     "watermark>=2.4",
 ]
