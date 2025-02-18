@@ -16,14 +16,7 @@ from constants import (
     LANCEDB_URI,
 )
 
-from utils import (
-    TextChunk,
-    gen_pyvis,
-)
-
-from kg_text import construct_kg_text
-
-from transcript_utils import srt_to_lines, srt_to_text
+from utils import TextChunk, gen_pyvis, construct_kg
 
 if __name__ == "__main__":
     # start the stochastic call trace profiler and memory profiler
@@ -31,7 +24,11 @@ if __name__ == "__main__":
     profiler.start()
     tracemalloc.start()
 
-    files = [file for file in Path("test").iterdir()]
+    # define the global data structures
+    url_list: typing.List[str] = [
+        "https://aaic.alz.org/releases-2024/processed-red-meat-raises-risk-of-dementia.asp",
+        "https://www.theguardian.com/society/article/2024/jul/31/eating-processed-red-meat-could-increase-risk-of-dementia-study-finds",
+    ]
 
     vect_db: lancedb.db.LanceDBConnection = lancedb.connect(LANCEDB_URI)
 
@@ -44,8 +41,8 @@ if __name__ == "__main__":
     sem_overlay: nx.Graph = nx.Graph()
 
     try:
-        construct_kg_text(
-            files,
+        construct_kg(
+            url_list,
             chunk_table,
             sem_overlay,
             Path("data/entity.w2v"),
@@ -66,7 +63,7 @@ if __name__ == "__main__":
         gen_pyvis(
             sem_overlay,
             "kg.html",
-            num_docs=len(files),
+            num_docs=len(url_list),
         )
     except Exception as ex:
         ic(ex)

@@ -16,10 +16,7 @@ from constants import (
     LANCEDB_URI,
 )
 
-from utils import (
-    TextChunk,
-    gen_pyvis,
-)
+from utils import TextChunk, gen_pyvis, construct_kg
 
 if __name__ == "__main__":
     # start the stochastic call trace profiler and memory profiler
