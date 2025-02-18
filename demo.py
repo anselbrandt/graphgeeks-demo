@@ -1,70 +1,23 @@
-from collections import defaultdict
-from dataclasses import dataclass
-import enum
-import itertools
 import json
-import logging
-import math
-import os
 import pathlib
-import sys
 import traceback
 import tracemalloc
 import typing
-import unicodedata
 import warnings
 
 warnings.simplefilter(action="ignore", category=FutureWarning)
 
-
-from bs4 import BeautifulSoup
-from gliner_spacy.pipeline import GlinerSpacy
 from icecream import ic
-from lancedb.embeddings import get_registry
-from lancedb.pydantic import LanceModel, Vector
 from pyinstrument import Profiler
-import gensim
-import glirel
 import lancedb
 import networkx as nx
-import numpy as np
-import pandas as pd
-import pyvis
-import requests
-import spacy
-import transformers
 
 from constants import (
-    CHUNK_SIZE,
-    EMBED_FCN,
-    GLINER_MODEL,
     LANCEDB_URI,
-    NER_LABELS,
-    RE_LABELS,
-    SCRAPE_HEADERS,
-    SPACY_MODEL,
-    STOP_WORDS,
-    TR_ALPHA,
-    TR_LOOKBACK,
 )
 
 from utils import (
     TextChunk,
-    Entity,
-    uni_scrubber,
-    make_chunk,
-    scrape_html,
-    init_nlp,
-    parse_text,
-    make_entity,
-    extract_entity,
-    extract_relations,
-    calc_quantile_bins,
-    stripe_column,
-    root_mean_square,
-    connect_entities,
-    run_textrank,
-    abstract_overlay,
     gen_pyvis,
     construct_kg,
 )

@@ -1,25 +1,17 @@
 from collections import defaultdict
 from dataclasses import dataclass
-import enum
 import itertools
-import json
 import logging
 import math
 import os
 import pathlib
-import sys
-import traceback
-import tracemalloc
 import typing
 import unicodedata
 import warnings
 
 from bs4 import BeautifulSoup
-from gliner_spacy.pipeline import GlinerSpacy
 from icecream import ic
-from lancedb.embeddings import get_registry
 from lancedb.pydantic import LanceModel, Vector
-from pyinstrument import Profiler
 import gensim
 import glirel
 import lancedb
@@ -35,7 +27,6 @@ from constants import (
     CHUNK_SIZE,
     EMBED_FCN,
     GLINER_MODEL,
-    LANCEDB_URI,
     NER_LABELS,
     RE_LABELS,
     SCRAPE_HEADERS,
